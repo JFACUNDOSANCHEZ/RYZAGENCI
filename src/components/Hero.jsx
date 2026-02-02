@@ -14,6 +14,13 @@ const Hero = () => {
         }
     };
 
+    const scrollToSection = (sectionId) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
     return (
         <section className={styles.hero}>
             <div className={styles.bgGradient}></div>
@@ -40,6 +47,7 @@ const Hero = () => {
 
                     <motion.div variants={fadeUp} className={styles.actions}>
                         <motion.button
+                            onClick={() => scrollToSection('contact')}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className={styles.btnPrimary}
@@ -47,6 +55,7 @@ const Hero = () => {
                             Contactanos
                         </motion.button>
                         <motion.button
+                            onClick={() => scrollToSection('services')}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className={styles.btnSecondary}
@@ -88,7 +97,7 @@ const Hero = () => {
                     </motion.div>
                 </motion.div>
             </div>
-        </section>
+        </section >
     );
 };
 
