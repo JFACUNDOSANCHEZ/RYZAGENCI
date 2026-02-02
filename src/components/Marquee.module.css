@@ -1,0 +1,44 @@
+.marqueeSection {
+    padding: 3rem 0;
+    background: black;
+    /* Blend with background */
+    overflow: hidden;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+}
+
+.track {
+    display: flex;
+    gap: 4rem;
+    width: max-content;
+    /* Allow content to dictate width */
+    /* We use two motion divs inside to create the illusion of infinity if we want manual CSS, 
+       but here we rely on the container being wide enough. */
+}
+
+.content {
+    display: flex;
+    gap: 4rem;
+    flex-shrink: 0;
+}
+
+.word {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 900;
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    /* Outlined text */
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.word:hover {
+    color: white;
+    -webkit-text-stroke: gray;
+    cursor: default;
+}

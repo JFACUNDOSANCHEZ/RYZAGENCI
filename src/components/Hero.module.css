@@ -1,0 +1,211 @@
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-primary);
+    overflow: hidden;
+    padding: 0 4rem;
+    transition: background-color 0.3s ease;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent, var(--bg-primary));
+    z-index: 2;
+    pointer-events: none;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 6rem;
+    max-width: 1400px;
+    width: 100%;
+    align-items: center;
+    z-index: 10;
+}
+
+/* Typography Focus */
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-bottom: 0.3rem;
+    margin-top: 1rem;
+    display: block;
+}
+
+.title {
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+/* Vibrant Gradient Restored */
+.gradientText {
+    background: linear-gradient(135deg, #00f2fe 0%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 32rem;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+.actions {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+/* Hybrid Buttons: Gradient + Glass */
+.btnPrimary {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(135deg, #4facfe 0%, #06b8c2 100%);
+    border-radius: 99px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btnPrimary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(79, 172, 254, 0.4);
+}
+
+.btnSecondary {
+    padding: 1rem 2.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    /* Keep partially transparent white for contrast on gradients, or adapt */
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    border-radius: 99px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btnSecondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+}
+
+.visualWrapper {
+    position: relative;
+    height: 450px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.imageContainer {
+    position: relative;
+    width: auto;
+    height: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 1.5rem;
+    box-shadow: 0 30px 60px var(--shadow-color);
+    overflow: hidden;
+}
+
+.heroImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Restored Glow */
+.bgGradient {
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(79, 172, 254, 0.12) 0%, transparent 60%);
+    filter: blur(100px);
+    pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+    .hero {
+        padding: 120px 2rem 4rem;
+        min-height: auto;
+        /* Allow section to grow if content is tall */
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .content {
+        align-items: center;
+    }
+
+    .title {
+        font-size: clamp(3rem, 10vw, 4.5rem);
+    }
+
+    .description {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1rem;
+    }
+
+    .visualWrapper {
+        height: 350px;
+        width: 100%;
+    }
+
+    .imageContainer {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btnPrimary,
+    .btnSecondary {
+        width: 100%;
+    }
+}

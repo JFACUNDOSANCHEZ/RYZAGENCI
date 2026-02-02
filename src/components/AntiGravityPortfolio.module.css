@@ -1,0 +1,245 @@
+.mainSection {
+    position: relative;
+    padding-top: 8vh;
+    padding-bottom: 2vh;
+    background-color: var(--bg-primary);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 10vh;
+    padding: 0 1rem;
+}
+
+.subTitle {
+    color: var(--accent-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.sectionTitle {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.titleSpan {
+    background: linear-gradient(135deg, var(--text-secondary) 0%, var(--text-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.8;
+}
+
+.projectsWrapper {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.cardContainer {
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+}
+
+.card {
+    position: relative;
+    height: 650px;
+    width: 1000px;
+    max-width: 90vw;
+    border-radius: 24px;
+    background-color: #000;
+    transform-origin: top center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.cardInner {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: white;
+    position: relative;
+}
+
+.imageBackground {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cardInner:hover .image {
+    transform: scale(1.05);
+    /* Gentle zoom */
+}
+
+/* Gradient Overlay - hidden by default */
+.overlayGradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.cardInner:hover .overlayGradient {
+    opacity: 1;
+}
+
+.cardContent {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cardInner:hover .cardContent {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.headerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.number {
+    font-size: 2rem;
+    font-weight: 800;
+    opacity: 0.3;
+}
+
+.bottomRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin: 0 0 0.5rem 0;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 500px;
+    margin: 0;
+}
+
+.viewBtn {
+    background: white;
+    color: black;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.cardInner:hover .viewBtn {
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    .mainSection {
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+    }
+
+    .header {
+        margin-bottom: 5vh;
+    }
+
+    .card {
+        height: 500px;
+        width: 100%;
+        border-radius: 16px;
+    }
+
+    .cardContent {
+        padding: 1.5rem;
+    }
+
+    /* Keep info visible on mobile/touch by default for better UX */
+    .overlayGradient {
+        opacity: 0.8;
+    }
+
+    .cardContent {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .bottomRow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .description {
+        font-size: 0.9rem;
+    }
+
+    .viewBtn {
+        align-self: flex-end;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        height: 450px;
+    }
+
+    .sectionTitle {
+        font-size: 2.5rem;
+    }
+}
