@@ -9,7 +9,7 @@ html {
   --text-secondary: #a0a0a0;
   --accent-color: #4facfe;
   --accent-rgb: 79, 172, 254;
-  --glass-bg: rgba(10, 10, 10, 0.6);
+  --glass-bg: rgba(55, 55, 55, 0.337);
   --glass-border: rgb(255, 255, 255);
   --shadow-color: rgba(0, 0, 0, 0.5);
   --title-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);

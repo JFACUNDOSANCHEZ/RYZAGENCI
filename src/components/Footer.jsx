@@ -3,7 +3,7 @@ import { ArrowUpRight, Mail, MapPin, MessageCircle, Send } from 'lucide-react';
 import styles from './Footer.module.css';
 
 const Footer = () => {
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState('Hola RYZ, necesito una web para...');
 
     const handleWhatsAppSend = (e) => {
         e.preventDefault();
