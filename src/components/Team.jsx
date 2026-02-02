@@ -23,7 +23,7 @@ const Team = () => {
                         transition={{ delay: 0.1 }}
                         className={styles.sectionTitle}
                     >
-                        Creamos <span className={styles.titleSpan}>Gravedad Digital</span>
+                        Tu Marca <span className={styles.titleSpan}><br /> en el Siguiente Nivel</span>
                     </motion.h2>
                 </div>
 

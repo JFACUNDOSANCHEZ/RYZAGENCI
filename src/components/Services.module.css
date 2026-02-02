@@ -38,8 +38,10 @@
 }
 
 .titleSpan {
-    color: rgba(255, 255, 255, 0.5);
-    /* Muted contrast */
+    background: var(--title-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* New Layout: 2 Columns of Wide Cards */
@@ -61,9 +63,7 @@
     position: relative;
     padding: 2.5rem;
     border-radius: 16px;
-    background: transparent;
-    /* Minimal default */
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--bg-secondary);
     display: flex;
     align-items: flex-start;
     gap: 1.5rem;
@@ -73,10 +73,9 @@
 }
 
 .card:hover {
-    background: rgba(255, 255, 255, 0.03);
-    border-color: var(--accent-color);
+    background: var(--bg-primary);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px -10px var(--shadow-color);
 }
 
 /* Icon Styling */
@@ -85,19 +84,17 @@
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--bg-primary);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--text-secondary);
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .card:hover .iconWrapper {
     background: var(--accent-color);
     color: white !important;
-    border-color: var(--accent-color);
     transform: scale(1.1) rotate(-5deg);
 }
 
@@ -116,7 +113,7 @@
 }
 
 .card:hover .cardTitle {
-    color: white;
+    color: var(--accent-color);
 }
 
 .cardDescription {

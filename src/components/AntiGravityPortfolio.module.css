@@ -30,10 +30,11 @@
 }
 
 .titleSpan {
-    background: linear-gradient(135deg, var(--text-secondary) 0%, var(--text-primary) 100%);
+    background: var(--title-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .projectsWrapper {
@@ -57,9 +58,9 @@
     width: 1000px;
     max-width: 90vw;
     border-radius: 24px;
-    background-color: #000;
+    background-color: var(--bg-secondary);
     transform-origin: top center;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 50px var(--shadow-color);
     overflow: hidden;
 }
 
@@ -134,11 +135,11 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--glass-bg);
     backdrop-filter: blur(10px);
     padding: 0.5rem 1rem;
     border-radius: 100px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
 }
 
 .number {
@@ -168,8 +169,8 @@
 }
 
 .viewBtn {
-    background: white;
-    color: black;
+    background: var(--accent-color);
+    color: white;
     width: 60px;
     height: 60px;
     border-radius: 50%;

@@ -22,7 +22,7 @@ const services = [
     },
     {
         title: 'SEO & Rendimiento',
-        description: 'Posicionamiento orgánico y carga ultrarrápida. Optimizamos tu sitio para que Google te ame y tus clientes te encuentren.',
+        description: 'Posicionamiento orgánico y carga ultrarrápida. Optimizamos tu sitio para que tus clientes te encuentren.',
         icon: <Rocket />,
     }
 ];
@@ -33,18 +33,17 @@ const Services = () => {
             <div className={styles.container}>
                 <div className={styles.header}>
                     <motion.span
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
                         className={styles.subTitle}
                     >
                         Qué hacemos
                     </motion.span>
                     <motion.h2
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
                         className={styles.title}
                     >
                         Diseño y desarrollo  <br />

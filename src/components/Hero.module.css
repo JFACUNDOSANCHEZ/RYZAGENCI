@@ -61,10 +61,10 @@
 
 /* Vibrant Gradient Restored */
 .gradientText {
-    background: linear-gradient(135deg, #00f2fe 0%, var(--accent-color) 100%);
+    background: var(--title-gradient);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .description {
@@ -88,7 +88,7 @@
     font-size: 1rem;
     font-weight: 700;
     color: white;
-    background: linear-gradient(135deg, #4facfe 0%, #06b8c2 100%);
+    background: linear-gradient(135deg, var(--accent-color) 0%, #06b8c2 100%);
     border-radius: 99px;
     border: none;
     cursor: pointer;
@@ -103,10 +103,8 @@
 
 .btnSecondary {
     padding: 1rem 2.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    /* Keep partially transparent white for contrast on gradients, or adapt */
+    background: var(--glass-bg);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
     color: var(--text-primary);
     border-radius: 99px;
     font-weight: 600;
@@ -116,7 +114,7 @@
 }
 
 .btnSecondary:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--bg-secondary);
     border-color: var(--accent-color);
 }
 
@@ -132,18 +130,20 @@
 
 .imageContainer {
     position: relative;
-    width: auto;
+    width: 100%;
     height: 100%;
-    aspect-ratio: 4/3;
     border-radius: 1.5rem;
     box-shadow: 0 30px 60px var(--shadow-color);
     overflow: hidden;
+    background: var(--bg-secondary);
 }
 
-.heroImage {
+.heroImage,
+.heroVideo {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 /* Restored Glow */

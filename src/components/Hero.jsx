@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import styles from './Hero.module.css';
+import hm from './../image/hm2.mp4'
 
 const Hero = () => {
     // FadeUp variant for staggering text
@@ -71,11 +72,19 @@ const Hero = () => {
                         }}
                         className={styles.imageContainer}
                     >
-                        <img
+                        <video
+                            src={hm}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className={styles.heroVideo}
+                        ></video>
+                        {/* <img
                             src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=1200"
                             alt="High Tech Interface"
                             className={styles.heroImage}
-                        />
+                        /> */}
                     </motion.div>
                 </motion.div>
             </div>

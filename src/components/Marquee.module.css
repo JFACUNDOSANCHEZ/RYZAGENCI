@@ -1,11 +1,9 @@
 .marqueeSection {
     padding: 3rem 0;
-    background: black;
+    background: var(--bg-primary);
     /* Blend with background */
     overflow: hidden;
     position: relative;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     align-items: center;
 }
@@ -30,7 +28,7 @@
     font-weight: 900;
     white-space: nowrap;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    -webkit-text-stroke: 1px var(--glass-border);
     /* Outlined text */
     text-transform: uppercase;
     font-family: 'Inter', sans-serif;
@@ -38,7 +36,6 @@
 }
 
 .word:hover {
-    color: white;
-    -webkit-text-stroke: gray;
+    color: var(--text-primary);
     cursor: default;
 }

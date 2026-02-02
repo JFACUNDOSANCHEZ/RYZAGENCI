@@ -7,7 +7,7 @@ const Footer = () => {
 
     const handleWhatsAppSend = (e) => {
         e.preventDefault();
-        const phoneNumber = "5493512345678"; // Reemplaza con tu número de Córdoba (sin el +)
+        const phoneNumber = "5492945416727"; // Reemplaza con tu número de Córdoba (sin el +)
         const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     };
@@ -56,7 +56,7 @@ const Footer = () => {
                         </div>
                         <p className={styles.brandDesc}>
                             Soluciones digitales estratégicas para marcas con visión de futuro.
-                            Desde <strong>Córdoba, Argentina</strong> para el mundo.
+                            Desde <strong>Córdoba, Argentina</strong>.
                         </p>
                     </div>
 
@@ -64,7 +64,7 @@ const Footer = () => {
                     <div className={styles.col}>
                         <h4 className={styles.colTitle}>Navegación</h4>
                         <ul className={styles.list}>
-                            <li><a href="#hero">Inicio</a></li>
+                            <li><a href="/">Inicio</a></li>
                             <li><a href="#services">Servicios</a></li>
                             <li><a href="#portfolio">Proyectos</a></li>
                             <li><a href="#team">Nosotros</a></li>

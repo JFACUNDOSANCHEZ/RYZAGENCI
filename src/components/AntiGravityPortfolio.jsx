@@ -98,7 +98,7 @@ const AntiGravityPortfolio = () => {
                     transition={{ duration: 0.5 }}
                     className={styles.subTitle}
                 >
-                    Selected Works
+                    PORTAFOLIO
                 </motion.span>
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
