@@ -1,103 +1,72 @@
 import React, { useEffect } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue } from 'framer-motion';
 import styles from './Hero.module.css';
-import hm from './../image/hm2.mp4'
+import hm from './../image/hm3.mp4'
 
 const Hero = () => {
-    // FadeUp variant for staggering text
     const fadeUp = {
-        hidden: { opacity: 0, y: 40 },
+        hidden: { opacity: 0, y: 30 },
         visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
-        }
-    };
-
-    const scrollToSection = (sectionId) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            transition: { duration: 0.8, ease: [0.16, 0.7, 0.34, 1] }
         }
     };
 
     return (
-        <section className={styles.hero}>
-            <div className={styles.bgGradient}></div>
+        <section className={styles.hero} id="home">
+            <div className={styles.videoWrapper}>
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className={styles.bgVideo}
+                >
+                    <source src={hm} type="video/mp4" />
+                </video>
+                <div className={styles.overlay}></div>
+            </div>
 
             <div className={styles.container}>
                 <motion.div
                     initial="hidden"
-                    animate="visible"
+                    whileInView="visible"
+                    viewport={{ once: true }}
                     transition={{ staggerChildren: 0.15 }}
                     className={styles.content}
                 >
-                    <motion.span variants={fadeUp} className={styles.label}>
-                        Digital Agency
-                    </motion.span>
+                    <motion.div variants={fadeUp} >
+                        {/* Transformamos el Futuro con IA <span className={styles.badgeArrow}>→</span> */}
+                    </motion.div>
 
                     <motion.h1 variants={fadeUp} className={styles.title}>
-                        Diseño web <br />
-                        <span className={styles.gradientText}> y soluciones digitales.</span>
+                        Innovación Digital <br />
+                        <span className={styles.gradientText}>Sin Límites.</span>
                     </motion.h1>
 
                     <motion.p variants={fadeUp} className={styles.description}>
-                        Creamos sitios web profesionales para pymes y empresas que buscan presencia
+                        Potenciamos tu negocio con herramientas inteligentes que optimizan procesos y aceleran el crecimiento en la era digital.
                     </motion.p>
 
                     <motion.div variants={fadeUp} className={styles.actions}>
-                        <motion.button
-                            onClick={() => scrollToSection('contact')}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className={styles.btnPrimary}
-                        >
-                            Contactanos
-                        </motion.button>
-                        <motion.button
-                            onClick={() => scrollToSection('services')}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className={styles.btnSecondary}
-                        >
-                            Ver Servicios
-                        </motion.button>
-                    </motion.div>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.3 }}
-                    className={styles.visualWrapper}
-                >
-                    <motion.div
-                        animate={{ y: [-10, 10] }}
-                        transition={{
-                            duration: 4,
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                            ease: "easeInOut"
-                        }}
-                        className={styles.imageContainer}
-                    >
-                        <video
-                            src={hm}
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className={styles.heroVideo}
-                        ></video>
-                        {/* <img
-                            src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=1200"
-                            alt="High Tech Interface"
-                            className={styles.heroImage}
-                        /> */}
+                        <button className={styles.btnPrimary}>
+                            Descubrir Más <span className={styles.btnArrow}>→</span>
+                        </button>
                     </motion.div>
                 </motion.div>
             </div>
-        </section >
+
+            {/* <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2 }}
+                className={styles.scrollIndicator}
+            >
+                <div className={styles.line}></div>
+                <span>Desliza para ver más</span>
+            </motion.div> */}
+        </section>
     );
 };
 

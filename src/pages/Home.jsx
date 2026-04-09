@@ -1,17 +1,21 @@
 import Hero from '../components/Hero';
+import LogoMarquee from '../components/LogoMarquee';
 import Services from '../components/Services';
+import WebShowcase from '../components/WebShowcase';
 import AntiGravityPortfolio from '../components/AntiGravityPortfolio';
 import Marquee from '../components/Marquee';
-import Team from '../components/Team';
+import Pricing from '../components/Pricing';
 import Footer from '../components/Footer';
 
 const Home = () => {
     return (
-        <main className="bg-slate-900">
+        <main>
             <Hero />
+            {/* <LogoMarquee /> */}
             <Services />
-            <Team />
-            <AntiGravityPortfolio />
+            <WebShowcase />
+            <Pricing />
+            {/* <AntiGravityPortfolio /> */}
             <Marquee />
             <Footer />
         </main>

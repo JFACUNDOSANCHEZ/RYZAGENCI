@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ExternalLink, ArrowRight } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import { useState } from 'react';
 import styles from './AntiGravityPortfolio.module.css';
 import e1 from '../image/e1.jpeg';
 import e2 from '../image/e2.jpeg';
@@ -11,15 +12,15 @@ const projects = [
         id: 1,
         title: 'Somos Zap',
         category: 'E-Commerce',
-        description: 'Una experiencia de compra inmersiva con integración de pagos en tiempo real.',
+        description: 'Plataforma de comercio electrónico con experiencia de usuario fluida, integración de pagos y gestión de inventario en tiempo real.',
         image: e1,
         link: 'https://somoszap.com',
     },
     {
         id: 2,
         title: 'Panicafé',
-        category: 'Branding & Web',
-        description: 'Rediseño digital completo para una cadena de cafeterías premium.',
+        category: 'Branding',
+        description: 'Identidad visual completa y sitio web para cadena de cafeterías premium. Diseño que refleja calidad y experiencia.',
         image: e2,
         link: 'https://panicafe.us',
     },
@@ -27,106 +28,98 @@ const projects = [
         id: 3,
         title: 'H-Ferreyra',
         category: 'Corporate',
-        description: 'Portal corporativo para constructora líder con galerías interactivas.',
+        description: 'Portal corporativo moderno para empresa constructora, con galerías de proyectos interactivas y sistema de contacto.',
         image: e3,
         link: 'https://h-ferreyra.vercel.app',
     }
 ];
 
-const Card = ({ project, index, range, targetScale, progress }) => {
-    const container = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: container,
-        offset: ['start end', 'start start']
-    });
+const Portfolio = () => {
+    const [hoveredIndex, setHoveredIndex] = useState(null);
 
-    const scale = useTransform(progress, range, [1, targetScale]);
+    // Mapping sizes to projects for Bento Grid
+    const projectSizes = [styles.large, styles.tall, styles.wide];
 
     return (
-        <div ref={container} className={styles.cardContainer}>
-            <motion.div
-                style={{ scale, top: `calc(10vh + ${index * 25}px)` }}
-                className={styles.card}
-            >
-                <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.cardInner}
-                >
-                    {/* Full Background Image */}
-                    <div className={styles.imageBackground}>
-                        <div className={styles.overlayGradient}></div>
-                        <img src={project.image} alt={project.title} className={styles.image} />
-                    </div>
+        <section className={styles.mainSection} id="portfolio">
+            <div className={styles.container}>
+                <div className={styles.header}>
+                    <motion.span
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className={styles.subTitle}
+                    >
+                        Portfolio
+                    </motion.span>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                        className={styles.sectionTitle}
+                    >
+                        Proyectos que <span className={styles.titleSpan}>marcan la diferencia.</span>
+                    </motion.h2>
+                </div>
 
-                    {/* Floating Content */}
-                    <div className={styles.cardContent}>
-                        <div className={styles.headerRow}>
-                            <span className={styles.category}>{project.category}</span>
-                            <span className={styles.number}>0{index + 1}</span>
-                        </div>
-                        <div className={styles.bottomRow}>
-                            <div>
-                                <h2 className={styles.title}>{project.title}</h2>
-                                <p className={styles.description}>{project.description}</p>
-                            </div>
-                            <span className={styles.viewBtn}>
-                                Explore <ArrowRight size={20} />
-                            </span>
-                        </div>
-                    </div>
-                </a>
-            </motion.div>
-        </div>
-    );
-};
+                <div className={styles.grid}>
+                    {projects.map((project, index) => {
+                        const isHovered = hoveredIndex === index;
+                        const isSomethingHovered = hoveredIndex !== null;
 
-const AntiGravityPortfolio = () => {
-    const container = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: container,
-        offset: ['start start', 'end end']
-    });
+                        return (
+                            <motion.a
+                                key={project.id}
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`${styles.projectCard} ${projectSizes[index] || styles.normal}`}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                whileInView={{
+                                    opacity: isSomethingHovered && !isHovered ? 0.4 : 1,
+                                    scale: isHovered ? 1.02 : (isSomethingHovered ? 0.98 : 1),
+                                    zIndex: isHovered ? 10 : 1
+                                }}
+                                viewport={{ once: true }}
+                                onMouseEnter={() => setHoveredIndex(index)}
+                                onMouseLeave={() => setHoveredIndex(null)}
+                                transition={{
+                                    duration: 0.5,
+                                    ease: [0.16, 1, 0.3, 1],
+                                    // Stagger initial entrance but keep interactions fast
+                                    opacity: { duration: 0.4 },
+                                    scale: { duration: 0.4 }
+                                }}
+                            >
+                                <div className={styles.imageWrapper}>
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        className={styles.projectImage}
+                                    />
+                                </div>
 
-    return (
-        <section ref={container} className={styles.mainSection} id="portfolio">
-            <div className={styles.header}>
-                <motion.span
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className={styles.subTitle}
-                >
-                    PORTAFOLIO
-                </motion.span>
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    className={styles.sectionTitle}
-                >
-                    Últimos <span className={styles.titleSpan}>Proyectos</span>
-                </motion.h2>
-            </div>
-
-            <div className={styles.projectsWrapper}>
-                {projects.map((project, index) => {
-                    const targetScale = 1 - ((projects.length - index) * 0.05);
-                    return (
-                        <Card
-                            key={project.id}
-                            project={project}
-                            index={index}
-                            range={[index * 0.25, 1]}
-                            targetScale={targetScale}
-                            progress={scrollYProgress}
-                        />
-                    );
-                })}
+                                <div className={styles.overlay}>
+                                    <div className={styles.cardTop}>
+                                        <span className={styles.category}>{project.category}</span>
+                                        <div className={styles.iconBtn}>
+                                            <ArrowUpRight size={24} />
+                                        </div>
+                                    </div>
+                                    <div className={styles.content}>
+                                        <h3 className={styles.projectTitle}>{project.title}</h3>
+                                        <p className={styles.projectDesc}>{project.description}</p>
+                                    </div>
+                                </div>
+                            </motion.a>
+                        );
+                    })}
+                </div>
             </div>
         </section>
     );
 };
 
-export default AntiGravityPortfolio;
+export default Portfolio;

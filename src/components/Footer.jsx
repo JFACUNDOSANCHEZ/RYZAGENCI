@@ -1,103 +1,97 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Mail, MapPin, MessageCircle, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Instagram, Linkedin, ArrowUpRight } from 'lucide-react';
 import styles from './Footer.module.css';
 
 const Footer = () => {
-    const [message, setMessage] = useState('Hola RYZ, necesito una web para...');
+    const [message, setMessage] = useState('Hola RYZ, me gustaría hablar sobre mi proyecto...');
 
     const handleWhatsAppSend = (e) => {
         e.preventDefault();
-        const phoneNumber = "5492945416727"; // Reemplaza con tu número de Córdoba (sin el +)
+        const phoneNumber = "5492945416727";
         const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     };
 
     return (
-        <footer id="contact" className={styles.footer}>
+        <footer className={styles.footer} id="contact">
+            <div className={styles.bgGlow}></div>
             <div className={styles.container}>
-
-                {/* Nueva Sección Superior: CTA + Input de WhatsApp */}
-                <div className={styles.topSection}>
-                    <div className={styles.ctaContent}>
-                        <span className={styles.ctaLabel}>¿Listo para empezar?</span>
-                        <h2 className={styles.ctaHeading}>
-                            Llevamos tu marca al <br />
-                            <span className={styles.highlight}>Siguiente Nivel.</span>
-                        </h2>
-                    </div>
-
-                    <div className={styles.contactBox}>
-                        <p className={styles.boxText}>Escribinos tu idea y charlemos por WhatsApp:</p>
-                        <form onSubmit={handleWhatsAppSend} className={styles.inputGroup}>
-                            <input
-                                type="text"
-                                placeholder="Hola RYZ, necesito una web para..."
-                                value={message}
-                                onChange={(e) => setMessage(e.target.value)}
-                                className={styles.mainInput}
-                                required
-                            />
-                            <button type="submit" className={styles.sendBtn}>
-                                <MessageCircle size={20} />
-                                <span>Enviar</span>
-                            </button>
-                        </form>
-                    </div>
+                <div className={styles.top}>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className={styles.sectionBadge}
+                    >
+                        Contact
+                    </motion.div>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className={styles.bigTitle}
+                    >
+                        Listo para destacar?
+                    </motion.h2>
                 </div>
 
-                <div className={styles.divider} />
+                {/* Primary Contact Action */}
+                <div style={{ marginBottom: '8rem', textAlign: 'center' }}>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        style={{ maxWidth: '600px', margin: '0 auto' }}
+                    >
+                        <form onSubmit={handleWhatsAppSend} style={{ display: 'flex', gap: '1rem', background: 'rgba(255,255,255,0.05)', padding: '0.5rem', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                            <input
+                                type="text"
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                                style={{ flex: 1, background: 'transparent', border: 'none', padding: '0 1.5rem', color: 'white', outline: 'none' }}
+                            />
+                            <button type="submit" style={{ background: 'white', color: 'black', padding: '1rem 2rem', borderRadius: '100px', border: 'none', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                Enviar <ArrowUpRight size={18} />
+                            </button>
+                        </form>
+                    </motion.div>
+                </div>
 
-                {/* Main Grid */}
-                <div className={styles.grid}>
-                    {/* Brand Column */}
-                    <div className={styles.brandCol}>
-                        <div className={styles.logo}>
-                            RYZ<span className={styles.dot}>.</span>
-                        </div>
+                <div className={styles.contactGrid}>
+                    <div className={styles.brandInfo}>
+                        <div className={styles.footerLogo}>Ryz<span className={styles.logoDot}>.agencia</span></div>
                         <p className={styles.brandDesc}>
-                            Soluciones digitales estratégicas para marcas con visión de futuro.
-                            Desde <strong>Córdoba, Argentina</strong>.
+                            Potenciamos el crecimiento de tu negocio con desarrollo web premium y diseño institucional de primer nivel.
                         </p>
                     </div>
 
-                    {/* Links Columns */}
-                    <div className={styles.col}>
-                        <h4 className={styles.colTitle}>Navegación</h4>
-                        <ul className={styles.list}>
-                            <li><a href="/">Inicio</a></li>
-                            <li><a href="#services">Servicios</a></li>
-                            <li><a href="#portfolio">Proyectos</a></li>
-                            <li><a href="#team">Nosotros</a></li>
-                        </ul>
-                    </div>
-
-                    <div className={styles.col}>
-                        <h4 className={styles.colTitle}>Contacto</h4>
-                        <ul className={styles.list}>
-                            <li className={styles.contactItem}>
-                                <Mail size={16} /> hola@ryz.com
-                            </li>
-                            <li className={styles.contactItem}>
-                                <MapPin size={16} /> Córdoba, AR
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div className={styles.col}>
-                        <h4 className={styles.colTitle}>Redes</h4>
-                        <ul className={styles.list}>
-                            <li><a href="#">Instagram</a></li>
-                            <li><a href="#">LinkedIn</a></li>
-                        </ul>
+                    <div className={styles.linksWrapper}>
+                        <div className={styles.linkGroup}>
+                            <span className={styles.groupTitle}>Navegación</span>
+                            <a href="#home" className={styles.linkItem}>Inicio</a>
+                            <a href="#services" className={styles.linkItem}>Servicios</a>
+                            <a href="#portfolio" className={styles.linkItem}>Portafolio</a>
+                        </div>
+                        <div className={styles.linkGroup}>
+                            <span className={styles.groupTitle}>Contacto</span>
+                            <a href="mailto:hola@ryzagencia.com" className={styles.linkItem}>hola@ryzagencia.com</a>
+                            <a href="#" className={styles.linkItem}>Córdoba, Argentina</a>
+                        </div>
+                        <div className={styles.linkGroup}>
+                            <span className={styles.groupTitle}>Social</span>
+                            <a href="#" className={styles.linkItem}>Instagram</a>
+                            <a href="#" className={styles.linkItem}>LinkedIn</a>
+                        </div>
                     </div>
                 </div>
 
-                {/* Bottom Bar */}
-                <div className={styles.bottomBar}>
-                    <p>© {new Date().getFullYear()} RYZ. Hecho con ❤️ en Córdoba.</p>
-                    <div className={styles.legalLinks}>
-                        <a href="#">Privacidad</a>
-                        <a href="#">Términos</a>
+                <div className={styles.bottom}>
+                    <p>© {new Date().getFullYear()} RYZ Agencia Digital. Todos los derechos reservados.</p>
+                    <div className={styles.socials}>
+                        <a href="#" className={styles.socialLink}><Instagram size={20} /></a>
+                        <a href="#" className={styles.socialLink}><Linkedin size={20} /></a>
                     </div>
                 </div>
             </div>

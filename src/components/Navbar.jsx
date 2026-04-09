@@ -29,22 +29,23 @@ const Navbar = () => {
     };
 
     const navLinks = [
+        { name: 'Inicio', href: '#home' },
         { name: 'Servicios', href: '#services' },
-        { name: 'Proyectos', href: '#portfolio' },
-        { name: 'Nosotros', href: '#team' },
+        { name: 'Precios', href: '#pricing' },
+        { name: 'Portfolio', href: '#portfolio' },
         { name: 'Contacto', href: '#contact' },
     ];
 
     return (
         <>
             <motion.nav
-                initial={{ y: -50, x: "-50%", opacity: 0 }}
+                initial={{ y: -100, x: "-50%", opacity: 0 }}
                 animate={{ y: 0, x: "-50%", opacity: 1 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}
             >
                 <a href="/" className={styles.brand}>
-                    Ryz<span className={styles.brandSpan}>Tech</span>
+                    Ryz<span className={styles.brandSpan}>.ai</span>
                 </a>
 
                 {/* Desktop Menu */}
@@ -54,16 +55,18 @@ const Navbar = () => {
                             <a href={link.href} className={styles.navLink}>{link.name}</a>
                         </li>
                     ))}
-                    <li>
-                        <button onClick={toggleTheme} className={styles.themeToggle} aria-label="Toggle theme">
-                            {theme === 'dark' ? '☀️' : '🌙'}
-                        </button>
-                    </li>
                 </ul>
+
+                {/* Desktop Actions */}
+                <div className={styles.actions}>
+                    <a href="#contact" className={styles.ctaButton}>
+                        Presupuesto
+                    </a>
+                </div>
 
                 {/* Mobile Burger Button */}
                 <div className={styles.mobileActions}>
-                    <button onClick={toggleTheme} className={styles.themeToggleMobile} aria-label="Toggle theme">
+                    <button onClick={toggleTheme} className={styles.themeToggle} aria-label="Toggle theme">
                         {theme === 'dark' ? '☀️' : '🌙'}
                     </button>
                     <button
@@ -80,10 +83,10 @@ const Navbar = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.3 }}
+                        initial={{ opacity: 0, scale: 0.95, y: -20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         className={styles.mobileMenu}
                     >
                         <ul className={styles.mobileNavLinks}>
@@ -98,6 +101,16 @@ const Navbar = () => {
                                     </a>
                                 </li>
                             ))}
+                            <li>
+                                <a
+                                    href="#contact"
+                                    className={styles.ctaButton}
+                                    style={{ display: 'inline-block', marginTop: '1rem' }}
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    Hablemos
+                                </a>
+                            </li>
                         </ul>
                     </motion.div>
                 )}

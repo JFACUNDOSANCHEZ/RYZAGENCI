@@ -1,69 +1,123 @@
 .team {
-    padding: 10vh 2rem;
+    padding: 10rem 4rem;
     background-color: var(--bg-primary);
-    color: var(--text-primary);
     position: relative;
-
-    padding-top: 18vh;
-    padding-bottom: 20vh;
-
+    overflow: hidden;
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
+    position: relative;
+    z-index: 10;
 }
 
-/* Header Styles aligned with AntiGravityPortfolio */
 .header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
 }
 
-.subTitle {
-    color: var(--accent-color);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    font-size: 0.8rem;
-    display: block;
-    margin-bottom: 1rem;
+.sectionBadge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
 }
 
-.sectionTitle {
+.title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
     color: var(--text-primary);
     line-height: 1.1;
     letter-spacing: -0.02em;
-    margin: 0;
+    font-family: var(--font-heading);
 }
 
 .titleSpan {
-    background: var(--title-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    opacity: 0.9;
+    color: var(--text-secondary);
 }
 
-/* Content */
-.contentParams {
+.testimonialGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.testimonialCard {
+    background: #080d0a;
+    border: 1px solid rgba(0, 255, 136, 0.05);
+    border-radius: 20px;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
 }
 
-.description {
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+.testimonialCard:hover {
+    border-color: rgba(0, 255, 136, 0.15);
+    transform: translateY(-5px);
+}
+
+.userHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent-emerald);
+    color: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.userName {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.verified {
+    color: var(--accent-emerald);
+    font-size: 0.6rem;
+}
+
+.userRole {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.testimonialText {
+    font-size: 1rem;
     line-height: 1.6;
     color: var(--text-secondary);
-    font-weight: 400;
-    max-width: 800px;
 }
 
-.highlight {
-    color: var(--text-primary);
-    font-weight: 600;
+@media (max-width: 768px) {
+    .team {
+        padding: 6rem 1.5rem;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
 }
