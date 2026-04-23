@@ -5,22 +5,22 @@ import styles from './WebShowcase.module.css';
 
 const projects = [
     {
-        title: 'Nova Architecture',
+        title: 'ZAP.',
         category: 'Digital Studio',
         image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop',
-        link: '#'
+        link: 'https://somoszap.com/'
     },
     {
-        title: 'Zenith Watches',
-        category: 'E-commerce Luxury',
+        title: 'PANICAFÉ',
+        category: 'Cafetería',
         image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1999&auto=format&fit=crop',
         link: '#'
     },
     {
-        title: 'Aether Platform',
-        category: 'SaaS / Fintech',
+        title: 'TRS',
+        category: 'Diagnostico por imagen',
         image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop',
-        link: '#'
+        link: 'https://h-ferreyra.vercel.app/'
     },
     {
         title: 'Eon Logistics',
@@ -41,7 +41,7 @@ const WebShowcase = () => {
                         viewport={{ once: true }}
                         className={styles.badge}
                     >
-                        Nuestras Creaciones
+                        Nuestros Proyectos
                     </motion.span>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}

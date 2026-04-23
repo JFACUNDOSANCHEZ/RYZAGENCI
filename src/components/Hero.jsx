@@ -41,18 +41,18 @@ const Hero = () => {
                     </motion.div>
 
                     <motion.h1 variants={fadeUp} className={styles.title}>
-                        Innovación Digital <br />
-                        <span className={styles.gradientText}>Sin Límites.</span>
+                        SOLUCIONES DIGITALES <br />
+                        <span className={styles.gradientText}>PARA TU NEGOCIO.</span>
                     </motion.h1>
 
                     <motion.p variants={fadeUp} className={styles.description}>
-                        Potenciamos tu negocio con herramientas inteligentes que optimizan procesos y aceleran el crecimiento en la era digital.
+                        Impulsamos tu crecimiento. Desde desarrollo web hasta inteligencia artificial, creamos soluciones que marcan la diferencia.
                     </motion.p>
 
                     <motion.div variants={fadeUp} className={styles.actions}>
-                        <button className={styles.btnPrimary}>
+                        {/* <button className={styles.btnPrimary}>
                             Descubrir Más <span className={styles.btnArrow}>→</span>
-                        </button>
+                        </button> */}
                     </motion.div>
                 </motion.div>
             </div>
